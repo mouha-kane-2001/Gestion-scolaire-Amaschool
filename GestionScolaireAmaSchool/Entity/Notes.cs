@@ -17,6 +17,8 @@ namespace GestionScolaireAmaSchool.Entity
         [ForeignKey("Etudiants")]
         public int IdEtudiant { get; set; }
         public virtual Etudiants Etudiants { get; set; }
+        public virtual Classes Classes { get; set; }
+
 
         [Required]
         [ForeignKey("Matieres")]

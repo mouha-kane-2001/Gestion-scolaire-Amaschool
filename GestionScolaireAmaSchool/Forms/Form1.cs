@@ -28,6 +28,7 @@ namespace GestionScolaireAmaSchool
 
         private void dashbordToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.role = "Administrateurs";
             FormDashbord formDashbord = new FormDashbord(role);
            formDashbord.Show();
            formDashbord.MdiParent = this;
@@ -44,7 +45,7 @@ namespace GestionScolaireAmaSchool
         {
              FormLogin formDashbord = new FormLogin();
             formDashbord.Show();
-            formDashbord.MdiParent = this;
+           
         }
 
         private void noteGestionToolStripMenuItem_Click(object sender, EventArgs e)

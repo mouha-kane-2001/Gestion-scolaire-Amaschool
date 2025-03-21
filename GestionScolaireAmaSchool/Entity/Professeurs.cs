@@ -28,6 +28,6 @@ namespace GestionScolaireAmaSchool.Entity
         [MaxLength(15)]
         public string Telephone { get; set; }
 
-        public virtual ICollection<Cours> CoursEnseignes { get; set; } = new List<Cours>();
+        public virtual Utilisateurs Utilisateur { get; set; }
     }
 }

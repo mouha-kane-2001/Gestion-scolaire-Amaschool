@@ -7,9 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GestionScolaireAmaSchool.controls;
 using GestionScolaireAmaSchool.Data;
 using GestionScolaireAmaSchool.Entity;
 using GestionScolaireAmaSchool.Forms.FormsAcceuil;
+using GestionScolaireAmaSchool.Forms.FormsDashbord;
 
 namespace GestionScolaireAmaSchool.Forms.FormsAuthentification
 {
@@ -43,16 +45,39 @@ namespace GestionScolaireAmaSchool.Forms.FormsAuthentification
                     txtPasseword.Text = "";
                     txtUserName.Text = "";
                     string roleUser = user.Role;
-                    FormDashbord form = new FormDashbord(roleUser);
+                    int idUser = user.Id;
+                    if (string.IsNullOrEmpty(roleUser)) {
+                        MessageBox.Show("role vide", "erreur", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    FormDashbordProfesseur formpro = new FormDashbordProfesseur(roleUser, idUser);
+                    if ((roleUser == "professeur")) { 
+                         
+                        formpro.Show();
+                        this.Hide();
+                        return;
+
+                    }
+                    FormDashbord form = new FormDashbord(roleUser, idUser);
                     form.Show();
                     this.Hide();
+                    return;
                 }
                 else
                 {
                     MessageBox.Show("erreur de connexion", "connexion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-        } 
-        
+        }
+
+        private void FormLogin_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using GestionScolaireAmaSchool.Data;
 using GestionScolaireAmaSchool.Entity;
 using BCrypt.Net;
+using GestionScolaireAmaSchool.controls;
 namespace GestionScolaireAmaSchool.Forms.FormsGestion
 {
     public partial class GestionUtilisateur : Form
@@ -29,15 +30,17 @@ namespace GestionScolaireAmaSchool.Forms.FormsGestion
             string PasswordHacher = BCrypt.Net.BCrypt.HashPassword(Password);
             string role = cmbRole.Text.Trim();
             string telephon = txtTelephon.Text.Trim();
-            if (string.IsNullOrEmpty(nom) || string.IsNullOrEmpty(Password) ||
-       string.IsNullOrEmpty(role) || string.IsNullOrEmpty(telephon))
+            
+            if (Validation.ChampsEstvide(nom)|| Validation.ChampsEstvide(Password) ||
+       Validation.ChampsEstvide(role) || Validation.ChampsEstvide(telephon))
             {
-                MessageBox.Show("Veuiller remplir toute les champs");
+                Validation.MessageErreur("Veuiller remplir toute les champs");              
                 return;
             }
             if (!telephon.All(char.IsDigit) || telephon.Length < 9)
             {
-                MessageBox.Show("Le numéro de téléphone est invalide.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Validation.MessageErreur("Veuiller remplir toute les champs");
+
                 return;
             }
             try
@@ -50,13 +53,13 @@ namespace GestionScolaireAmaSchool.Forms.FormsGestion
                 Db.Utilisateur.Add(utilisateurs);
                 Db.SaveChanges();
                 clear();
-                MessageBox.Show("ajout d un utilisateur avec succes");
+            
+                Validation.MessageErreur("ajout d un utilisateur avec succes");
                 refresh();
             }
             catch (Exception ex)
-            {
-                MessageBox.Show($"Erreur lors de l'ajout de l'utilisateur : {ex.Message}");
-
+            {      
+                Validation.MessageErreur($"Erreur lors de l'ajout de l'utilisateur : {ex.Message}");
             }
         }
 
@@ -81,7 +84,7 @@ namespace GestionScolaireAmaSchool.Forms.FormsGestion
                 DataGridViewRow Row = dtgvUser.SelectedRows[0];
                 int Id = Int32.Parse(Row.Cells["Id"].Value.ToString());
                 string ID = Id.ToString();
-                MessageBox.Show("l id est "); MessageBox.Show(ID);
+            
                 Utilisateurs utilisateurs = new Utilisateurs();
                 utilisateurs = Db.Utilisateur.Find(Id);
                 if (utilisateurs != null)
@@ -92,7 +95,10 @@ namespace GestionScolaireAmaSchool.Forms.FormsGestion
                     txtTelephon.Text = (utilisateurs.Telephone).ToString();
 
                 }
-            } else { MessageBox.Show("aucun ligne recupere"); }
+            } else
+            {
+                Validation.MessageErreur("aucun ligne recupere");
+            }
 
         }
 
@@ -102,7 +108,7 @@ namespace GestionScolaireAmaSchool.Forms.FormsGestion
         private void dtgvUser_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             remplirChmps();
-            MessageBox.Show("ok doubleclik");
+   
         }
 
         private void btnModifier_Click(object sender, EventArgs e)
@@ -115,12 +121,14 @@ namespace GestionScolaireAmaSchool.Forms.FormsGestion
             if (string.IsNullOrEmpty(nom) || string.IsNullOrEmpty(Password) ||
        string.IsNullOrEmpty(role) || string.IsNullOrEmpty(telephon))
             {
-                MessageBox.Show("Veuiller remplir toute les champs");
+              
+                Validation.MessageErreur("Veuiller remplir toute les champs");
                 return;
             }
             if (!telephon.All(char.IsDigit) || telephon.Length < 9)
             {
-                MessageBox.Show("Le numéro de téléphone est invalide.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+       
+                Validation.MessageErreur("Le numéro de téléphone est invalide");
                 return;
             }
             try
@@ -133,13 +141,15 @@ namespace GestionScolaireAmaSchool.Forms.FormsGestion
             
                 Db.SaveChanges();
                 clear();
-                MessageBox.Show("Modification d un utilisateur avec succes");
+
+                Validation.MessageInfo("Modification d un utilisateur avec succes");
                 refresh();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erreur lors deModification de l'utilisateur : {ex.Message}");
 
+                Validation.MessageErreur($"Erreur lors deModification de l'utilisateur : {ex.Message}");
+    
             }
 
         }
@@ -158,19 +168,20 @@ namespace GestionScolaireAmaSchool.Forms.FormsGestion
                 utilisateurs = Db.Utilisateur.Find(Id);
                 if (utilisateurs != null)
                 {
-                    DialogResult resultat = MessageBox.Show("est tu sur de vouloir suprimer ", "confirmation",
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (resultat == DialogResult.Yes)
+
+                    if (Validation.MessageConfirmation("est tu sur de vouloir suprimer"))
                     {
                         Db.Utilisateur.Remove(utilisateurs);
                         Db.SaveChanges();
-                        MessageBox.Show("Supression avec succes");
+                        Validation.MessageInfo("Supression avec succes");
+
                     }
-                   
+
                 }
-                else { MessageBox.Show("Aucun user trouver"); }
+                else {Validation.MessageErreur("Aucun user trouver");
+                }
             }
-            else { MessageBox.Show("Supression avec succes"); }
+            else { Validation.MessageErreur("Supression avec succes"); }
 
         }
 
@@ -182,9 +193,14 @@ namespace GestionScolaireAmaSchool.Forms.FormsGestion
             txtTelephon.Text = "";
 
             dtgvUser.ClearSelection();
-            MessageBox.Show("Operation annule. Les champs ont ete reinitialiser.", "Annulation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Validation.MessageInfo("Operation annule. Les champs ont ete reinitialiser");
         
     }
+
+        private void GestionUtilisateur_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

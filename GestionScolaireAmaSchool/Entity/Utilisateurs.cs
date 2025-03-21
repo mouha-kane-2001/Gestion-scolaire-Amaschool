@@ -26,8 +26,10 @@ namespace GestionScolaireAmaSchool.Entity
 
         [MaxLength(15)]
         [Phone]
-        //avec le telephone nous allons gere A2F
-        public string Telephone { get; set; } 
+       
+        public string Telephone { get; set; }
+        public virtual ICollection<Professeurs> Professeurs { get; set; }
+
     }
 }
   

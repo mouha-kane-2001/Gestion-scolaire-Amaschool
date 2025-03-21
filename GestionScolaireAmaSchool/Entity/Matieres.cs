@@ -16,6 +16,5 @@ namespace GestionScolaireAmaSchool.Entity
         [MaxLength(100)]
         public string NomMatiere { get; set; }
 
-        public virtual ICollection<Cours> Cours { get; set; } = new List<Cours>();
     }
 }

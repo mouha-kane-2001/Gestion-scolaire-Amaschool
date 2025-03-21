@@ -39,21 +39,44 @@
     <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
       <HintPath>..\packages\BCrypt.Net-Next.4.0.3\lib\net48\BCrypt.Net-Next.dll</HintPath>
     </Reference>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.Cryptography.2.4.0\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus, Version=7.7.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.7.7.0\lib\net462\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.Interfaces, Version=7.7.0.0, Culture=neutral, PublicKeyToken=a694d7f3b0907a61, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.Interfaces.7.7.0\lib\net462\EPPlus.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.System.Drawing, Version=7.7.0.0, Culture=neutral, PublicKeyToken=2308d35469c9bac0, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.System.Drawing.7.7.0\lib\net462\EPPlus.System.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.4, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.4\lib\net461\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.3.0.1\lib\netstandard2.0\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
-    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
     </Reference>
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -62,6 +85,7 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -74,7 +98,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="controls\MenuPrincipale.cs" />
+    <Compile Include="controls\SessionManager.cs" />
+    <Compile Include="controls\Validation.cs" />
     <Compile Include="Data\DbContextAmaSchool.cs" />
     <Compile Include="Entity\Classes.cs" />
     <Compile Include="Entity\ClassesCours.cs" />
@@ -94,35 +119,11 @@
     <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormRapport\FormStatistiques.cs">
+    <Compile Include="Forms\FormRapport\FormRapports.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormRapport\FormStatistiques.Designer.cs">
-      <DependentUpon>FormStatistiques.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FormRapport\FormReleveNotes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormRapport\FormReleveNotes.Designer.cs">
-      <DependentUpon>FormReleveNotes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FormsDashbord\FormAccueilAdmin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormsDashbord\FormAccueilAdmin.Designer.cs">
-      <DependentUpon>FormAccueilAdmin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FormsDashbord\FormAccueilAgent.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormsDashbord\FormAccueilAgent.Designer.cs">
-      <DependentUpon>FormAccueilAgent.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FormsDashbord\FormAccueilDE.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormsDashbord\FormAccueilDE.Designer.cs">
-      <DependentUpon>FormAccueilDE.cs</DependentUpon>
+    <Compile Include="Forms\FormRapport\FormRapports.Designer.cs">
+      <DependentUpon>FormRapports.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormsDashbord\FormDashbord.cs">
       <SubType>Form</SubType>
@@ -141,6 +142,12 @@
     </Compile>
     <Compile Include="Forms\FormsAuthentification\FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsDashbord\FormDashbordProfesseur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsDashbord\FormDashbordProfesseur.Designer.cs">
+      <DependentUpon>FormDashbordProfesseur.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormsGestion\FormGestionClasse.cs">
       <SubType>Form</SubType>
@@ -218,11 +225,26 @@
     <Compile Include="Migrations\202503030016428_premier_migration.Designer.cs">
       <DependentUpon>202503030016428_premier_migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202503181304544_migrationCollection.cs" />
+    <Compile Include="Migrations\202503181304544_migrationCollection.Designer.cs">
+      <DependentUpon>202503181304544_migrationCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202503201208399_MIGRATIONpROFESSEURiD.cs" />
+    <Compile Include="Migrations\202503201208399_MIGRATIONpROFESSEURiD.Designer.cs">
+      <DependentUpon>202503201208399_MIGRATIONpROFESSEURiD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202503211257355_ajoutMatiere.cs" />
+    <Compile Include="Migrations\202503211257355_ajoutMatiere.Designer.cs">
+      <DependentUpon>202503211257355_ajoutMatiere.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormRapport\FormRapports.resx">
+      <DependentUpon>FormRapports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormsAuthentification\FormA2F.resx">
       <DependentUpon>FormA2F.cs</DependentUpon>
@@ -233,11 +255,17 @@
     <EmbeddedResource Include="Forms\FormsDashbord\FormDashbord.resx">
       <DependentUpon>FormDashbord.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsDashbord\FormDashbordProfesseur.resx">
+      <DependentUpon>FormDashbordProfesseur.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormsGestion\FormGestionEtudiant.resx">
       <DependentUpon>FormGestionEtudiant.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormsGestion\FormGestionNotes.resx">
       <DependentUpon>FormGestionNotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormsGestion\GestionProfesseurs.resx">
+      <DependentUpon>GestionProfesseurs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormsGestion\GestionUtilisateur.resx">
       <DependentUpon>GestionUtilisateur.cs</DependentUpon>
@@ -262,6 +290,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202503030016428_premier_migration.resx">
       <DependentUpon>202503030016428_premier_migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503181304544_migrationCollection.resx">
+      <DependentUpon>202503181304544_migrationCollection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503201208399_MIGRATIONpROFESSEURiD.resx">
+      <DependentUpon>202503201208399_MIGRATIONpROFESSEURiD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503211257355_ajoutMatiere.resx">
+      <DependentUpon>202503211257355_ajoutMatiere.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

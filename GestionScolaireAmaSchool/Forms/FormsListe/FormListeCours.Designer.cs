@@ -39,7 +39,7 @@
             this.dtgvCour.Name = "dtgvCour";
             this.dtgvCour.RowHeadersWidth = 62;
             this.dtgvCour.RowTemplate.Height = 28;
-            this.dtgvCour.Size = new System.Drawing.Size(814, 276);
+            this.dtgvCour.Size = new System.Drawing.Size(817, 288);
             this.dtgvCour.TabIndex = 1;
             // 
             // FormListeCours

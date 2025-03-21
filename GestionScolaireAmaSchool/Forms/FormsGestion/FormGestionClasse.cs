@@ -16,5 +16,10 @@ namespace GestionScolaireAmaSchool.Forms.FormsGestion
         {
             InitializeComponent();
         }
+
+        private void FormGestionClasse_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
